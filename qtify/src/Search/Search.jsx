@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./Search.module.css";
-import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
-import useAutocomplete from "@mui/base/useAutocomplete";
+import { ReactComponent as SearchIcon } from "../assets/Search icon.svg";
+import { useAutocomplete } from "@mui/base/useAutocomplete";
 import { styled } from "@mui/system";
-import { truncate } from "../../helpers/helpers";
-import { useNavigate } from "react-router-dom";
+//import { truncate } from "../../helpers/helpers";
+//import { useNavigate } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 
-const Listbox = styled("ul")(({ theme }) => ({
+/*const Listbox = styled("ul")(({ theme }) => ({
   width: "100%",
   margin: 0,
   padding: 0,
@@ -34,7 +34,7 @@ const Listbox = styled("ul")(({ theme }) => ({
     backgroundColor: "#2977f5",
     color: "white",
   },
-}));
+}));*/
 
 function Search({ searchData, placeholder }) {
   const {
@@ -51,11 +51,11 @@ function Search({ searchData, placeholder }) {
     getOptionLabel: (option) => option.title,
   });
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const onSubmit = (e, value) => {
-    e.preventDefault();
+    /*e.preventDefault();
     console.log(value);
-    navigate(`/album/${value.slug}`);
+    navigate(`/album/${value.slug}`);*/
     //Process form data, call API, set state etc.
   };
 
@@ -82,7 +82,7 @@ function Search({ searchData, placeholder }) {
           </button>
         </div>
       </form>
-      {groupedOptions.length > 0 ? (
+      {/*{groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => {
             // console.log(option);
@@ -107,7 +107,7 @@ function Search({ searchData, placeholder }) {
             );
           })}
         </Listbox>
-      ) : null}
+      ) : null}*/}
     </div>
   );
 }
