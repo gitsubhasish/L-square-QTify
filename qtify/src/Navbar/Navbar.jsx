@@ -7,21 +7,23 @@ import styles from "./Navbar.module.css";
 
 function Navbar({ searchData }) {
   return (
-    <nav className={styles.navbar}>
-      {/*<Link to="/">
+    <div>
+      <nav className={styles.navbar}>
+        {/*<Link to="/">
+          <Logo />
+        </Link>
+        <Search
+          placeholder="Search a song of your choice"
+          searchData={searchData}
+        />*/}
         <Logo />
-      </Link>
-      <Search
-        placeholder="Search a song of your choice"
-        searchData={searchData}
-      />*/}
-      <Logo />
-      <Search
-        placeholder="Search a song of your choice"
-        searchData={searchData}
-      />
-      <Button>Give Feedback</Button>
-    </nav>
+        <Search
+          placeholder="Search a song of your choice"
+          searchData={searchData}
+        />
+        <Button children={"Give Feedback"} />
+      </nav>
+    </div>
   );
 }
 
