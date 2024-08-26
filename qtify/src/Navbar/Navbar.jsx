@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 import Search from "../Search/Search";
 import styles from "./Navbar.module.css";
 
-function Navbar({ searchData }) {
+function Navbar() {
   return (
     <div>
       <nav className={styles.navbar}>
@@ -18,8 +18,8 @@ function Navbar({ searchData }) {
         />*/}
         <Logo />
         <Search
-          placeholder="Search an Album of your choice"
-          searchData={searchData}
+          placeholder={"Search an Album of your choice"}
+          //searchData={searchData}
         />
         <Button children={"Give Feedback"} />
       </nav>
