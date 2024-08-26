@@ -18,7 +18,7 @@ function Navbar({ searchData }) {
         />*/}
         <Logo />
         <Search
-          placeholder="Search a song of your choice"
+          placeholder="Search an Album of your choice"
           searchData={searchData}
         />
         <Button children={"Give Feedback"} />

@@ -4,7 +4,7 @@
   border-radius: 8px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border: 1px solid var(--color-black);
+  border: 1px solid #000;
   width: 502px;
 }
 
@@ -18,7 +18,7 @@
   border-radius: 0px 8px 8px 0px;
   padding: 14px 20px;
   height: 100%;
-  border: 1px solid var(--color-black);
+  border: 1px solid #000;
   border-left: none;
   cursor: pointer;
   height: 100%;
