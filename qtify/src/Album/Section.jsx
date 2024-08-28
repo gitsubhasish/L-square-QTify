@@ -6,7 +6,7 @@ import Carousel from "../Carousel/Carousel";
 
 const Section = ({ title, apiEndpoint }) => {
   const [albums, setAlbums] = useState([]); // Initialize as an empty array
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [loading, setLoading] = useState(true); // State to handle loading
   const [error, setError] = useState(null); // State to handle error
 
