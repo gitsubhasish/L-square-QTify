@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AlbumCard from "./AlbumCard";
 import { Button, Typography, Box } from "@mui/material";
+import Carousel from "../Carousel/Carousel";
 
 const Section = ({ title, apiEndpoint }) => {
   const [albums, setAlbums] = useState([]); // Initialize as an empty array
@@ -56,14 +57,18 @@ const Section = ({ title, apiEndpoint }) => {
         <Typography>Loading...</Typography>
       ) : error ? (
         <Typography color="error">{error}</Typography>
+      ) : collapsed ? (
+        <Carousel>
+          {albums.map((album) => (
+            <AlbumCard key={album.id} album={album} />
+          ))}
+        </Carousel>
       ) : (
-        !collapsed && (
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-            {albums.map((album) => (
-              <AlbumCard key={album.id} album={album} />
-            ))}
-          </Box>
-        )
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+          {albums.map((album) => (
+            <AlbumCard key={album.id} album={album} />
+          ))}
+        </Box>
       )}
     </Box>
   );
