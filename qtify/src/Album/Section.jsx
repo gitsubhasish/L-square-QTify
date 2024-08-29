@@ -7,28 +7,29 @@ import Carousel from "../Carousel/Carousel";
 const Section = ({ title, apiEndpoint, isSongSection = false }) => {
   const [albums, setAlbums] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [selectedGenreKey, setSelectedGenreKey] = useState("");
-  const [collapsed, setCollapsed] = useState(true);
+  const [selectedGenreKey, setSelectedGenreKey] = useState("all"); // Default to "all"
+  const [collapsed, setCollapsed] = useState(true); // For albums section, to toggle between carousel and grid
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Fetch albums or songs data
     const fetchData = async () => {
       try {
         const albumResponse = await axios.get(apiEndpoint);
         setAlbums(albumResponse.data || []);
 
         if (isSongSection) {
+          // Fetch genres data if it's the song section
           const genresResponse = await axios.get(
             "https://qtify-backend-labs.crio.do/genres"
           );
           const fetchedGenres = genresResponse.data.data;
 
-          setGenres(fetchedGenres);
+          setGenres([{ key: "all", label: "All" }, ...fetchedGenres]); // Add "All" to genres
 
-          if (Array.isArray(fetchedGenres) && fetchedGenres.length > 0) {
-            setSelectedGenreKey(fetchedGenres[0].key);
-          }
+          // Default to the "all" tab
+          setSelectedGenreKey("all");
         }
 
         setLoading(false);
@@ -59,11 +60,13 @@ const Section = ({ title, apiEndpoint, isSongSection = false }) => {
   };
 
   // Apply genre filtering for the songs section
-  console.log("Albums for filter : ", albums);
   const filteredAlbums = isSongSection
-    ? albums.filter((album) => album.genre.key === selectedGenreKey)
+    ? selectedGenreKey === "all"
+      ? albums // Show all albums if "All" is selected
+      : albums.filter((album) => album.genre.key === selectedGenreKey) // Filter by selected genre
     : albums;
 
+  // Log filtered albums for debugging
   useEffect(() => {
     console.log("Filtered Albums:", filteredAlbums);
   }, [filteredAlbums]);
@@ -127,7 +130,7 @@ const Section = ({ title, apiEndpoint, isSongSection = false }) => {
                 <AlbumCard
                   key={album.id}
                   album={album}
-                  displayLikes={isSongSection}
+                  displayLikes={isSongSection} // Display "Likes" for songs
                 />
               ))}
             </Carousel>
@@ -137,7 +140,7 @@ const Section = ({ title, apiEndpoint, isSongSection = false }) => {
                 <AlbumCard
                   key={album.id}
                   album={album}
-                  displayLikes={isSongSection}
+                  displayLikes={isSongSection} // Display "Likes" for songs
                 />
               ))}
             </Carousel>
