@@ -7,30 +7,23 @@ import Section from "./Album/Section";
 function App() {
   return (
     <div className="App">
-      {/*<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>*/}
       <Navbar />
       <Hero />
       <div style={{ padding: "20px", backgroundColor: "#000" }}>
         <Section
           title="Top Albums"
           apiEndpoint="https://qtify-backend-labs.crio.do/albums/top"
+          isSongSection={false}
         />
         <Section
           title="New Albums"
           apiEndpoint="https://qtify-backend-labs.crio.do/albums/new"
+          isSongSection={false}
+        />
+        <Section
+          title="Songs"
+          apiEndpoint="https://qtify-backend-labs.crio.do/songs"
+          isSongSection={true}
         />
       </div>
     </div>

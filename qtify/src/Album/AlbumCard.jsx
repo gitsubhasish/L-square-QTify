@@ -1,5 +1,3 @@
-// components/AlbumCard.jsx
-
 import React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,7 +7,7 @@ import Chip from "@mui/material/Chip";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 
-const AlbumCard = ({ album }) => {
+const AlbumCard = ({ album, displayLikes }) => {
   return (
     <Card sx={{ width: 170 }}>
       <CardMedia
@@ -22,7 +20,9 @@ const AlbumCard = ({ album }) => {
         <Chip
           size="small"
           style={{ backgroundColor: "#000", color: "#fff" }}
-          label={`${album.follows} Follows`}
+          label={
+            displayLikes ? `${album.likes} Likes` : `${album.follows} Follows`
+          }
         />
       </CardContent>
       <Typography gutterBottom variant="p" component="div">
